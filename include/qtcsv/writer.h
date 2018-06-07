@@ -36,21 +36,21 @@ namespace QtCSV
         // Write data to csv-file
         static bool write(const QString& filePath,
                         const AbstractData& data,
-                        const QString& separator = QString(","),
-                        const QString& textDelimiter = QString("\""),
+                        const QString& separator = QStringLiteral(","),
+                        const QString& textDelimiter = QStringLiteral("\""),
                         const WriteMode& mode = REWRITE,
                         const QStringList& header = QStringList(),
                         const QStringList& footer = QStringList(),
-                        QTextCodec* codec = QTextCodec::codecForName("UTF-8"));
+                        QTextCodec* codec = QTextCodec::codecForLocale());
 
         // Write data to IO Device
         static bool write(QIODevice& ioDevice,
                         const AbstractData& data,
-                        const QString& separator = QString(","),
-                        const QString& textDelimiter = QString("\""),
+                        const QString& separator = QStringLiteral(","),
+                        const QString& textDelimiter = QStringLiteral("\""),
                         const QStringList& header = QStringList(),
                         const QStringList& footer = QStringList(),
-                        QTextCodec* codec = QTextCodec::codecForName("UTF-8"));
+                        QTextCodec* codec = QTextCodec::codecForLocale());
     };
 }
 
