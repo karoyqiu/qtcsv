@@ -3,9 +3,9 @@ cmake_minimum_required (VERSION 3.0)
 project (qtcsv VERSION 1.5.0 LANGUAGES CXX)
 
 # set options
-option(STATIC_LIB "build as static lib if ON, otherwise build shared lib" OFF)
-option(USE_QT4 "builds against Qt4 if ON, otherwise builds against Qt5" OFF)
-option(BUILD_TESTS "build tests" ON)
+set(STATIC_LIB ON)
+set(USE_QT4 OFF)
+set(BUILD_TESTS OFF)
 
 # find qt package
 if(USE_QT4)
@@ -59,17 +59,6 @@ if (CMAKE_COMPILER_IS_GNUCXX)
 endif()
 
 target_link_libraries(${PROJECT_NAME} PRIVATE ${QT_CORE_TARGET})
-
-install(TARGETS ${PROJECT_NAME} EXPORT ${PROJECT_NAME}Config
-        RUNTIME DESTINATION bin
-        LIBRARY DESTINATION lib
-        ARCHIVE DESTINATION lib)
-
-install(DIRECTORY include DESTINATION .)
-
-# create and install cmake package files
-install(EXPORT ${PROJECT_NAME}Config DESTINATION share/${PROJECT_NAME}/cmake)
-export(TARGETS ${PROJECT_NAME} FILE ${PROJECT_NAME}Config.cmake)
 
 if(BUILD_TESTS)
     add_subdirectory(tests)
