@@ -157,6 +157,7 @@ bool WriterPrivate::writeToIODevice(QIODevice& ioDevice,
     }
 
     QTextStream stream(&ioDevice);
+    stream.setGenerateByteOrderMark(true);
     stream.setCodec(codec);
     while( content.hasNext() )
     {
